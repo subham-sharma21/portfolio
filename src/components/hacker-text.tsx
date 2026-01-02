@@ -9,13 +9,9 @@ interface HackerTextProps {
 }
 
 export function HackerText({ text, className = '', trigger = 'hover' }: HackerTextProps) {
-  const [displayText, setDisplayText] = useState(() => {
-    if (trigger === 'mount' || trigger === 'both') {
-      return text.split('').map(() => '!@#$%^&*()_+-=[]{}|;:,.<>?'[Math.floor(Math.random() * 26)]).join('')
-    }
-    return text
-  })
+  const [displayText, setDisplayText] = useState(text)
   const [isAnimating, setIsAnimating] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
 
   const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?'
   
@@ -47,6 +43,7 @@ export function HackerText({ text, className = '', trigger = 'hover' }: HackerTe
   }
 
   useEffect(() => {
+    setIsMounted(true)
     if (trigger === 'mount' || trigger === 'both') {
       const timer = setTimeout(scramble, 500)
       return () => clearTimeout(timer)
@@ -55,12 +52,20 @@ export function HackerText({ text, className = '', trigger = 'hover' }: HackerTe
 
   const handleInteraction = (trigger === 'hover' || trigger === 'both') ? { onMouseEnter: scramble } : {}
 
+  if (!isMounted) {
+    return (
+      <span className={`font-mono cursor-pointer ${className}`}>
+        {text}
+      </span>
+    )
+  }
+
   return (
     <span 
       className={`font-mono cursor-pointer ${className}`}
       {...handleInteraction}
     >
-      {displayText || text}
+      {displayText}
     </span>
   )
 }
