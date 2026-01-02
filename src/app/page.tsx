@@ -34,11 +34,6 @@ export default function Home() {
                 transition={{ duration: 0.6 }}
                 className="space-y-4 sm:space-y-6"
               >
-                <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-sm font-medium">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                  <span>Available for work</span>
-                </div>
-                
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
                   <span className="block">
                     <HackerText 
