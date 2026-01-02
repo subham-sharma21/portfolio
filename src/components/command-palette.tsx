@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { Command } from 'cmdk'
 import { useRouter } from 'next/navigation'
-import { Search, Home, User, Briefcase, BookOpen, Mail, Sun, Moon } from 'lucide-react'
+import { Search, Home, User, Briefcase, Star, Mail } from 'lucide-react'
 
 export function CommandPalette() {
   const [open, setOpen] = useState(false)
@@ -66,16 +66,16 @@ export function CommandPalette() {
                 Projects
               </Command.Item>
               <Command.Item
-                onSelect={() => runCommand(() => router.push('/blog'))}
+                onSelect={() => runCommand(() => router.push('/extras'))}
                 className="flex items-center gap-2 rounded-sm px-2 py-1.5 text-sm hover:bg-accent cursor-pointer"
               >
-                <BookOpen className="h-4 w-4" />
-                Blog
+                <Star className="h-4 w-4" />
+                Extras
               </Command.Item>
             </Command.Group>
             <Command.Group heading="Actions">
               <Command.Item
-                onSelect={() => runCommand(() => navigator.clipboard.writeText('your@email.com'))}
+                onSelect={() => runCommand(() => navigator.clipboard.writeText('sharmasubham.1302@gmail.com'))}
                 className="flex items-center gap-2 rounded-sm px-2 py-1.5 text-sm hover:bg-accent cursor-pointer"
               >
                 <Mail className="h-4 w-4" />
