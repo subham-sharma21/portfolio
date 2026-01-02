@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import 'leaflet/dist/leaflet.css'
-import '../styles/leaflet.css'
 import { GridBackground } from '@/components/grid-background'
 import { Navigation } from '@/components/navigation'
 import { CommandPalette } from '@/components/command-palette'
