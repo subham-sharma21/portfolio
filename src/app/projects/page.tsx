@@ -2,6 +2,7 @@
 
 import { PageTransition } from '@/components/page-transition'
 import { ProjectCardSkeleton } from '@/components/skeleton'
+import { HackerText } from '@/components/hacker-text'
 import { motion } from 'framer-motion'
 import { ExternalLink, Github, Calendar } from 'lucide-react'
 import Link from 'next/link'
@@ -83,7 +84,13 @@ export default function Projects() {
             transition={{ duration: 0.5 }}
             className="mb-16"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Projects</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              <HackerText 
+                text="Projects" 
+                className="bg-gradient-to-r from-primary via-purple-400 to-primary bg-clip-text text-transparent"
+                trigger="both"
+              />
+            </h1>
             <p className="text-xl text-muted-foreground max-w-3xl">
               A collection of projects I've built, ranging from full-stack applications to
               experimental prototypes. Each project represents a learning journey and technical challenge.

@@ -1,30 +1,32 @@
 'use client'
 
 import { PageTransition } from '@/components/page-transition'
+import { LocationMap } from '@/components/location-map'
+import { HackerText } from '@/components/hacker-text'
 import { motion } from 'framer-motion'
 import { Calendar, MapPin, Award, Code } from 'lucide-react'
 
 const timeline = [
   {
-    year: '2022 - Present',
-    title: 'Senior Frontend Engineer',
-    company: 'Tech Innovators Inc.',
-    location: 'San Francisco, CA',
-    description: 'Leading frontend development for a SaaS platform serving 100k+ users. Built scalable React applications with Next.js and TypeScript.',
-  },
-  {
-    year: '2020 - 2022',
+    year: 'Jan 2023 - Jul 2024',
     title: 'Frontend Developer',
-    company: 'Digital Solutions Co.',
-    location: 'Austin, TX',
-    description: 'Developed responsive web applications using React and modern CSS. Collaborated with design teams to implement pixel-perfect UIs.',
+    company: 'Coratia Technologies Pvt. Ltd',
+    location: 'Rourkela, Odisha',
+    description: 'Created interactive web interfaces and integrated 3D models and animations to enhance user experience. Designed UI elements and assets for marketing and product interfaces, ensuring brand consistency.',
   },
   {
-    year: '2018 - 2020',
-    title: 'Junior Developer',
-    company: 'StartupXYZ',
-    location: 'Remote',
-    description: 'Built landing pages and marketing websites. Gained experience with JavaScript frameworks and modern development workflows.',
+    year: 'Nov 2022 - Apr 2023',
+    title: 'Digital Media Strategist',
+    company: 'Yallo Retail',
+    location: 'England, UK',
+    description: 'Created and executed digital media strategies to boost brand engagement and presence. Developed content, tracked performance, and collaborated with teams to align marketing goals.',
+  },
+  {
+    year: 'May 2022 - Nov 2022',
+    title: 'Content Marketing Manager',
+    company: 'Skill Magnet',
+    location: 'England, UK',
+    description: 'Built and managed an online community through effective content and social media strategies. Moderated discussions, analyzed feedback, and drove community growth and brand perception.',
   },
 ]
 
@@ -46,7 +48,13 @@ export default function About() {
             transition={{ duration: 0.5 }}
             className="mb-16"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">About Me</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              <HackerText 
+                text="About Me" 
+                className="bg-gradient-to-r from-primary via-purple-400 to-primary bg-clip-text text-transparent"
+                trigger="both"
+              />
+            </h1>
             <p className="text-xl text-muted-foreground max-w-3xl">
               I'm a passionate frontend engineer with 5+ years of experience building modern web applications.
               I specialize in React, Next.js, and TypeScript, with a focus on performance, accessibility, and user experience.
@@ -113,6 +121,16 @@ export default function About() {
                 </div>
               ))}
             </div>
+          </motion.div>
+          {/* Location Map */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-16"
+          >
+            <h2 className="text-2xl font-bold mb-8">Location</h2>
+            <LocationMap />
           </motion.div>
         </section>
       </div>
