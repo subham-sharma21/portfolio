@@ -5,7 +5,7 @@ import { MagneticButton } from '@/components/magnetic-button'
 import { TechMarquee } from '@/components/tech-marquee'
 import { HackerText } from '@/components/hacker-text'
 import { CardSkeleton, ProjectCardSkeleton, ExperienceCardSkeleton } from '@/components/skeleton'
-import { Github, ExternalLink, ArrowRight, Code2, Zap, Users, Award, MapPin, Calendar } from 'lucide-react'
+import { Github, ExternalLink, ArrowRight, Code2, Zap, Users, Award, MapPin, Calendar, Download } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 
@@ -70,7 +70,16 @@ export default function Home() {
                 >
                   View My Work
                 </MagneticButton>
-                <button className="w-full sm:w-auto px-6 py-3 border border-border rounded-lg hover:bg-card transition-colors">
+                <button 
+                  className="w-full sm:w-auto px-6 py-3 border border-border rounded-lg hover:bg-card transition-colors inline-flex items-center gap-2"
+                  onClick={() => {
+                    const link = document.createElement('a')
+                    link.href = '/Resume.pdf'
+                    link.download = 'Subham_Sharma_Resume.pdf'
+                    link.click()
+                  }}
+                >
+                  <Download className="w-4 h-4" />
                   Download Resume
                 </button>
               </motion.div>
