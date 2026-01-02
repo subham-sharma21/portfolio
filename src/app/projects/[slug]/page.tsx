@@ -46,8 +46,9 @@ The platform successfully handles:
   }
 }
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
-  const project = projects[params.slug as keyof typeof projects]
+export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const project = projects[slug as keyof typeof projects]
   
   if (!project) {
     notFound()
