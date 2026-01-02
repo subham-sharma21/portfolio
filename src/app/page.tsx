@@ -3,6 +3,7 @@
 import { PageTransition } from '@/components/page-transition'
 import { MagneticButton } from '@/components/magnetic-button'
 import { TechMarquee } from '@/components/tech-marquee'
+import { HackerText } from '@/components/hacker-text'
 import { CardSkeleton, ProjectCardSkeleton, ExperienceCardSkeleton } from '@/components/skeleton'
 import { Github, ExternalLink, ArrowRight, Code2, Zap, Users, Award, MapPin, Calendar } from 'lucide-react'
 import { motion } from 'framer-motion'
@@ -39,9 +40,15 @@ export default function Home() {
                 </div>
                 
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
-                  <span className="block">Building Digital</span>
-                  <span className="block bg-gradient-to-r from-primary via-purple-400 to-primary bg-clip-text text-transparent">
-                    Experiences
+                  <span className="block">
+                    <HackerText 
+                      text="Subham Sharma" 
+                      className="bg-gradient-to-r from-primary via-purple-400 to-primary bg-clip-text text-transparent"
+                      trigger="both"
+                    />
+                  </span>
+                  <span className="block text-muted-foreground text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-2">
+                    Building Digital Experiences
                   </span>
                 </h1>
                 
