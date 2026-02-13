@@ -5,7 +5,7 @@ import { MagneticButton } from '@/components/magnetic-button'
 import { TechMarquee } from '@/components/tech-marquee'
 import { HackerText } from '@/components/hacker-text'
 import { CardSkeleton, ProjectCardSkeleton, ExperienceCardSkeleton } from '@/components/skeleton'
-import { Github, ExternalLink, ArrowRight, Code2, Zap, Users, Award, MapPin, Calendar, Download } from 'lucide-react'
+import { Github, ExternalLink, ArrowRight, Code2, Zap, Users, Award, MapPin, Calendar, Download, Coffee } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 
@@ -114,6 +114,12 @@ export default function Home() {
                   <Code2 className="w-6 h-6 sm:w-8 sm:h-8 text-blue-500 mx-auto mb-2 sm:mb-3" />
                   <div className="text-xl sm:text-2xl font-bold mb-1">10+</div>
                   <div className="text-xs sm:text-sm text-muted-foreground">Technologies Used</div>
+                </div>
+                
+                <div className="spotlight-card bg-card border border-border rounded-xl p-4 sm:p-6 text-center">
+                  <Coffee className="w-6 h-6 sm:w-8 sm:h-8 text-orange-500 mx-auto mb-2 sm:mb-3" />
+                  <div className="text-xl sm:text-2xl font-bold mb-1">400+</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground">Coffee Consumed</div>
                 </div>
               </motion.div>
             )}
