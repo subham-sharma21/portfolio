@@ -106,20 +106,14 @@ export default function Home() {
                 
                 <div className="spotlight-card bg-card border border-border rounded-xl p-4 sm:p-6 text-center">
                   <Zap className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-500 mx-auto mb-2 sm:mb-3" />
-                  <div className="text-xl sm:text-2xl font-bold mb-1">11+</div>
+                  <div className="text-xl sm:text-2xl font-bold mb-1">5+</div>
                   <div className="text-xs sm:text-sm text-muted-foreground">Projects Built</div>
                 </div>
                 
                 <div className="spotlight-card bg-card border border-border rounded-xl p-4 sm:p-6 text-center">
-                  <Users className="w-6 h-6 sm:w-8 sm:h-8 text-blue-500 mx-auto mb-2 sm:mb-3" />
-                  <div className="text-xl sm:text-2xl font-bold mb-1">1M+</div>
-                  <div className="text-xs sm:text-sm text-muted-foreground">Users Reached</div>
-                </div>
-                
-                <div className="spotlight-card bg-card border border-border rounded-xl p-4 sm:p-6 text-center">
-                  <Award className="w-6 h-6 sm:w-8 sm:h-8 text-orange-500 mx-auto mb-2 sm:mb-3" />
-                  <div className="text-xl sm:text-2xl font-bold mb-1">15+</div>
-                  <div className="text-xs sm:text-sm text-muted-foreground">Awards Won</div>
+                  <Code2 className="w-6 h-6 sm:w-8 sm:h-8 text-blue-500 mx-auto mb-2 sm:mb-3" />
+                  <div className="text-xl sm:text-2xl font-bold mb-1">10+</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground">Technologies Used</div>
                 </div>
               </motion.div>
             )}
