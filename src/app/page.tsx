@@ -100,13 +100,13 @@ export default function Home() {
               >
                 <div className="spotlight-card bg-card border border-border rounded-xl p-4 sm:p-6 text-center">
                   <Code2 className="w-6 h-6 sm:w-8 sm:h-8 text-primary mx-auto mb-2 sm:mb-3" />
-                  <div className="text-xl sm:text-2xl font-bold mb-1">5+</div>
+                  <div className="text-xl sm:text-2xl font-bold mb-1">2+</div>
                   <div className="text-xs sm:text-sm text-muted-foreground">Years Experience</div>
                 </div>
                 
                 <div className="spotlight-card bg-card border border-border rounded-xl p-4 sm:p-6 text-center">
                   <Zap className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-500 mx-auto mb-2 sm:mb-3" />
-                  <div className="text-xl sm:text-2xl font-bold mb-1">50+</div>
+                  <div className="text-xl sm:text-2xl font-bold mb-1">11+</div>
                   <div className="text-xs sm:text-sm text-muted-foreground">Projects Built</div>
                 </div>
                 
