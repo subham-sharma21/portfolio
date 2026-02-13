@@ -5,12 +5,13 @@ import { MagneticButton } from '@/components/magnetic-button'
 import { TechMarquee } from '@/components/tech-marquee'
 import { HackerText } from '@/components/hacker-text'
 import { CardSkeleton, ProjectCardSkeleton, ExperienceCardSkeleton } from '@/components/skeleton'
-import { Github, ExternalLink, ArrowRight, Code2, Zap, Users, Award, MapPin, Calendar, Download, Coffee } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { Github, ExternalLink, ArrowRight, Code2, Zap, Users, Award, MapPin, Calendar, Download, Coffee, ChevronDown } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
+  const [isExpanded, setIsExpanded] = useState(false)
 
   useEffect(() => {
     // Simulate loading time
@@ -259,34 +260,73 @@ export default function Home() {
                 className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12"
               >
                 {/* Experience */}
-                <div className="spotlight-card bg-card border border-border rounded-xl p-6 sm:p-8">
+                <div className="spotlight-card bg-card border border-border rounded-xl p-6 sm:p-8 h-fit relative z-10">
                   <div className="space-y-6">
-                    <div className="flex items-center gap-3">
-                      <MapPin className="w-5 h-5 text-primary" />
-                      <h3 className="text-lg sm:text-xl font-semibold">Current Role</h3>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <MapPin className="w-5 h-5 text-primary" />
+                        <h3 className="text-lg sm:text-xl font-semibold">Current Role</h3>
+                      </div>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          setIsExpanded(!isExpanded)
+                        }}
+                        className="text-muted-foreground hover:text-primary transition-colors relative z-20 cursor-pointer"
+                        aria-label={isExpanded ? "Collapse" : "Expand"}
+                      >
+                        <motion.div
+                          animate={{ rotate: isExpanded ? 180 : 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <ChevronDown className="w-5 h-5" />
+                        </motion.div>
+                      </button>
                     </div>
                     
                     <div className="space-y-4">
                       <div>
-                        <h4 className="font-semibold">Senior Frontend Engineer</h4>
-                        <p className="text-primary text-sm">Tech Innovators Inc.</p>
+                        <h4 className="font-semibold">Software Engineer</h4>
+                        <p className="text-primary text-sm">Cognizant</p>
                       </div>
                       
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        Leading frontend development for a SaaS platform serving 100k+ users. 
-                        Building scalable React applications with Next.js and TypeScript.
-                      </p>
+                      <AnimatePresence initial={false}>
+                        {isExpanded ? (
+                          <motion.ul
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="text-sm text-muted-foreground leading-relaxed space-y-2 overflow-hidden"
+                          >
+                            <li>• Developed scalable frontend modules using React with structured state management and REST API consumption</li>
+                            <li>• Built reusable and modular UI components following clean architecture and component reusability principles</li>
+                            <li>• Implemented responsive and accessible interfaces using semantic HTML and ARIA best practices</li>
+                            <li>• Improved performance optimization through efficient rendering, memoization, and client-side UI optimization</li>
+                          </motion.ul>
+                        ) : (
+                          <motion.p
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="text-sm text-muted-foreground leading-relaxed overflow-hidden"
+                          >
+                            Developed scalable frontend modules using React with structured state management and REST API consumption...
+                          </motion.p>
+                        )}
+                      </AnimatePresence>
                       
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">
                         <Calendar className="w-4 h-4" />
-                        <span>2022 - Present</span>
+                        <span>June 2025 - Present</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Latest Blog */}
-                <div className="spotlight-card bg-card border border-border rounded-xl p-6 sm:p-8">
+                <div className="spotlight-card bg-card border border-border rounded-xl p-6 sm:p-8 relative z-10">
                   <div className="space-y-6">
                     <div className="flex items-center gap-3">
                       <Code2 className="w-5 h-5 text-primary" />
@@ -295,19 +335,25 @@ export default function Home() {
                     
                     <div className="space-y-4">
                       <h4 className="font-semibold line-clamp-2">
-                        Building Scalable React Applications
+                        Code Vibe: Coding with Generative AI
                       </h4>
                       
                       <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
-                        Architectural patterns and best practices for building large-scale React 
-                        applications that can grow with your team and user base.
+                        Exploring how generative AI is transforming the way we write code, 
+                        collaborate, and build software in the modern development landscape.
                       </p>
                       
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-muted-foreground">2 days ago • 8 min read</span>
+                        <span className="text-sm text-muted-foreground">LinkedIn Article</span>
                         <a 
-                          href="/blog" 
-                          className="inline-flex items-center gap-1 text-primary hover:gap-2 transition-all text-sm font-medium"
+                          href="https://www.linkedin.com/posts/subhamsharma1421_code-vibecoding-generativeai-ugcPost-7420134227637256192-wy8v?utm_source=share&utm_medium=member_desktop"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-primary hover:gap-2 transition-all text-sm font-medium relative z-20 cursor-pointer"
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            window.open('https://www.linkedin.com/posts/subhamsharma1421_code-vibecoding-generativeai-ugcPost-7420134227637256192-wy8v?utm_source=share&utm_medium=member_desktop', '_blank')
+                          }}
                         >
                           Read More
                           <ArrowRight className="w-3 h-3" />
