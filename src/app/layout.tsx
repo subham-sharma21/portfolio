@@ -4,6 +4,7 @@ import './globals.css'
 import { GridBackground } from '@/components/grid-background'
 import { Navigation } from '@/components/navigation'
 import { CommandPalette } from '@/components/command-palette'
+import { Analytics } from '@vercel/analytics/next'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,6 +27,7 @@ export default function RootLayout({
         <main className="pt-16">
           {children}
         </main>
+        <Analytics />
       </body>
     </html>
   )
