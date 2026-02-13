@@ -155,24 +155,29 @@ export default function Home() {
                     whileHover={{ y: -5 }}
                     className="spotlight-card bg-card border border-border rounded-xl overflow-hidden group"
                   >
-                    <div className="aspect-video bg-gradient-to-br from-primary/20 to-purple-500/20 flex items-center justify-center">
-                      <div className="text-3xl sm:text-4xl opacity-50">🚀</div>
+                    <div className="aspect-video relative overflow-hidden bg-card">
+                      <img 
+                        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" 
+                        alt="Portfolio Website"
+                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
                     </div>
                     <div className="p-4 sm:p-6">
                       <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-1">
-                        E-Commerce Platform
+                        Portfolio Website
                       </h3>
                       <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-                        Full-stack Next.js application with Stripe integration and real-time inventory management.
+                        A premium developer portfolio website built with Next.js 15, featuring interactive animations and modern design.
                       </p>
                       <div className="flex flex-wrap gap-1 mb-4">
                         <span className="px-2 py-1 bg-primary/20 text-primary text-xs rounded">Next.js</span>
                         <span className="px-2 py-1 bg-primary/20 text-primary text-xs rounded">TypeScript</span>
-                        <span className="px-2 py-1 bg-primary/20 text-primary text-xs rounded">Stripe</span>
+                        <span className="px-2 py-1 bg-primary/20 text-primary text-xs rounded">Framer Motion</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded">Live</span>
-                        <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                        <a href="https://github.com/subham-sharma21/portfolio" target="_blank" rel="noopener noreferrer" className="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded hover:bg-green-500/30 transition-colors">Live</a>
+                        <a href="https://github.com/subham-sharma21/portfolio" target="_blank" rel="noopener noreferrer"><Github className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" /></a>
                       </div>
                     </div>
                   </motion.div>
@@ -181,24 +186,29 @@ export default function Home() {
                     whileHover={{ y: -5 }}
                     className="spotlight-card bg-card border border-border rounded-xl overflow-hidden group"
                   >
-                    <div className="aspect-video bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center">
-                      <div className="text-3xl sm:text-4xl opacity-50">📊</div>
+                    <div className="aspect-video relative overflow-hidden bg-card">
+                      <img 
+                        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" 
+                        alt="JobLens"
+                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
                     </div>
                     <div className="p-4 sm:p-6">
                       <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-1">
-                        Analytics Dashboard
+                        JobLens
                       </h3>
                       <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-                        Real-time data visualization platform with interactive charts and custom reporting.
+                        End-to-end job market intelligence system with analytics pipeline and interactive heatmaps.
                       </p>
                       <div className="flex flex-wrap gap-1 mb-4">
-                        <span className="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded">React</span>
-                        <span className="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded">D3.js</span>
-                        <span className="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded">Node.js</span>
+                        <span className="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded">Python</span>
+                        <span className="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded">Analytics</span>
+                        <span className="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded">Visualization</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded">Live</span>
-                        <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                        <span className="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded">Completed</span>
+                        <a href="https://github.com/subham-sharma21/JobLens" target="_blank" rel="noopener noreferrer"><Github className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" /></a>
                       </div>
                     </div>
                   </motion.div>
@@ -207,24 +217,29 @@ export default function Home() {
                     whileHover={{ y: -5 }}
                     className="spotlight-card bg-card border border-border rounded-xl overflow-hidden group md:col-span-2 lg:col-span-1"
                   >
-                    <div className="aspect-video bg-gradient-to-br from-orange-500/20 to-red-500/20 flex items-center justify-center">
-                      <div className="text-3xl sm:text-4xl opacity-50">🎨</div>
+                    <div className="aspect-video relative overflow-hidden bg-card">
+                      <img 
+                        src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=800&q=80" 
+                        alt="BabyCryAnalyser"
+                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
                     </div>
                     <div className="p-4 sm:p-6">
                       <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-1">
-                        Design System
+                        BabyCryAnalyser
                       </h3>
                       <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-                        Comprehensive component library with Storybook documentation and design tokens.
+                        Analyzes baby cry audio files to determine sentiment and provide insights into baby's needs.
                       </p>
                       <div className="flex flex-wrap gap-1 mb-4">
-                        <span className="px-2 py-1 bg-orange-500/20 text-orange-400 text-xs rounded">Storybook</span>
-                        <span className="px-2 py-1 bg-orange-500/20 text-orange-400 text-xs rounded">Figma</span>
-                        <span className="px-2 py-1 bg-orange-500/20 text-orange-400 text-xs rounded">React</span>
+                        <span className="px-2 py-1 bg-orange-500/20 text-orange-400 text-xs rounded">ML</span>
+                        <span className="px-2 py-1 bg-orange-500/20 text-orange-400 text-xs rounded">Audio Processing</span>
+                        <span className="px-2 py-1 bg-orange-500/20 text-orange-400 text-xs rounded">Python</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-xs bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded">In Progress</span>
-                        <Github className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                        <span className="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded">Completed</span>
+                        <a href="https://github.com/subham-sharma21/BabyCryAnalyser" target="_blank" rel="noopener noreferrer"><Github className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" /></a>
                       </div>
                     </div>
                   </motion.div>
