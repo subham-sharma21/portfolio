@@ -71,8 +71,9 @@ Building scalable React applications requires thoughtful architecture, proper st
   }
 }
 
-export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params
+export default async function BlogPost(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params
+  const { slug } = params
   const post = blogPosts[slug as keyof typeof blogPosts]
   
   if (!post) {

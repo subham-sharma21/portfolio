@@ -46,8 +46,9 @@ The platform successfully handles:
   }
 }
 
-export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params
+export default async function ProjectPage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params
+  const { slug } = params
   const project = projects[slug as keyof typeof projects]
   
   if (!project) {
