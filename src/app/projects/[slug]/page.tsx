@@ -1,3 +1,6 @@
+'use client'
+
+import React from 'react'
 import { notFound } from 'next/navigation'
 import { PageTransition } from '@/components/page-transition'
 import { motion } from 'framer-motion'
@@ -46,8 +49,8 @@ The platform successfully handles:
   }
 }
 
-export default async function ProjectPage(props: { params: Promise<{ slug: string }> }) {
-  const params = await props.params
+export default function ProjectPage(props: { params: Promise<{ slug: string }> }) {
+  const params = React.use(props.params)
   const { slug } = params
   const project = projects[slug as keyof typeof projects]
   

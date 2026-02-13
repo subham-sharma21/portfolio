@@ -1,3 +1,6 @@
+'use client'
+
+import React from 'react'
 import { notFound } from 'next/navigation'
 import { PageTransition } from '@/components/page-transition'
 import { motion } from 'framer-motion'
@@ -71,8 +74,8 @@ Building scalable React applications requires thoughtful architecture, proper st
   }
 }
 
-export default async function BlogPost(props: { params: Promise<{ slug: string }> }) {
-  const params = await props.params
+export default function BlogPost(props: { params: Promise<{ slug: string }> }) {
+  const params = React.use(props.params)
   const { slug } = params
   const post = blogPosts[slug as keyof typeof blogPosts]
   
