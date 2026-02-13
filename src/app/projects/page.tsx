@@ -154,13 +154,14 @@ export default function Projects() {
                         ))}
                       </div>
                       
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-3 relative z-10">
                         {project.links.live && (
                           <a
                             href={project.links.live}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
+                            onClick={(e) => e.stopPropagation()}
+                            className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer"
                           >
                             <ExternalLink className="w-4 h-4" />
                             Live Demo
@@ -171,7 +172,8 @@ export default function Projects() {
                             href={project.links.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
+                            onClick={(e) => e.stopPropagation()}
+                            className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer"
                           >
                             <Github className="w-4 h-4" />
                             Source

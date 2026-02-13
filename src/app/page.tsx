@@ -176,8 +176,24 @@ export default function Home() {
                         <span className="px-2 py-1 bg-primary/20 text-primary text-xs rounded">Framer Motion</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <a href="https://github.com/subham-sharma21/portfolio" target="_blank" rel="noopener noreferrer" className="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded hover:bg-green-500/30 transition-colors">Live</a>
-                        <a href="https://github.com/subham-sharma21/portfolio" target="_blank" rel="noopener noreferrer"><Github className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" /></a>
+                        <a 
+                          href="https://github.com/subham-sharma21/portfolio" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          onClick={(e) => e.stopPropagation()}
+                          className="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded hover:bg-green-500/30 transition-colors cursor-pointer relative z-20"
+                        >
+                          Live
+                        </a>
+                        <a 
+                          href="https://github.com/subham-sharma21/portfolio" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="relative z-20 cursor-pointer"
+                        >
+                          <Github className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                        </a>
                       </div>
                     </div>
                   </motion.div>
@@ -208,7 +224,15 @@ export default function Home() {
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded">Completed</span>
-                        <a href="https://github.com/subham-sharma21/JobLens" target="_blank" rel="noopener noreferrer"><Github className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" /></a>
+                        <a 
+                          href="https://github.com/subham-sharma21/JobLens" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="relative z-20 cursor-pointer"
+                        >
+                          <Github className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                        </a>
                       </div>
                     </div>
                   </motion.div>
@@ -239,7 +263,15 @@ export default function Home() {
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded">Completed</span>
-                        <a href="https://github.com/subham-sharma21/BabyCryAnalyser" target="_blank" rel="noopener noreferrer"><Github className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" /></a>
+                        <a 
+                          href="https://github.com/subham-sharma21/BabyCryAnalyser" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="relative z-20 cursor-pointer"
+                        >
+                          <Github className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                        </a>
                       </div>
                     </div>
                   </motion.div>
