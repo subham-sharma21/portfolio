@@ -8,6 +8,13 @@ import { Calendar, MapPin, Award, Code } from 'lucide-react'
 
 const timeline = [
   {
+    year: 'June 2025 - Present',
+    title: 'Software Engineer',
+    company: 'Cognizant',
+    location: 'Bengaluru, India',
+    description: 'Developed scalable frontend modules using React with structured state management and REST API consumption. Built reusable and modular UI components following clean architecture and component reusability principles. Implemented responsive and accessible interfaces using semantic HTML and ARIA best practices.',
+  },
+  {
     year: 'Jan 2023 - Jul 2024',
     title: 'Frontend Developer',
     company: 'Coratia Technologies Pvt. Ltd',
