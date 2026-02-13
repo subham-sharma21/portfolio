@@ -56,8 +56,10 @@ export default function About() {
               />
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl">
-              I'm a passionate frontend engineer with 5+ years of experience building modern web applications.
-              I specialize in React, Next.js, and TypeScript, with a focus on performance, accessibility, and user experience.
+              Turning coffee into clean code and late-night ideas into scalable systems.
+            </p>
+            <p className="text-xl text-muted-foreground max-w-3xl">
+              My cats supervise the debugging process. They're very strict.
             </p>
           </motion.div>
 
