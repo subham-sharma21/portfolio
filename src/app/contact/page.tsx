@@ -15,6 +15,7 @@ import {
   MessageSquare,
   Clock,
   Sparkles,
+  AlertCircle,
 } from 'lucide-react'
 
 function BehanceIcon({ className }: { className?: string }) {
@@ -63,6 +64,10 @@ export default function ContactPage() {
   const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string }>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'idle' | 'success' | 'activation' | 'error'
+    message?: string
+  }>({ type: 'idle' })
 
   const handleCopyEmail = async () => {
     try {
@@ -114,14 +119,55 @@ export default function ContactPage() {
     if (!validate()) return
 
     setIsSubmitting(true)
+    setSubmitStatus({ type: 'idle' })
 
-    // Simulate sending message
-    await new Promise((resolve) => setTimeout(resolve, 800))
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${contactEmail}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          message: formData.message.trim(),
+          _subject: `Portfolio Message from ${formData.name.trim()}`,
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      })
 
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    setFormData({ name: '', email: '', message: '' })
-    setErrors({})
+      const result = await res.json()
+
+      if (res.ok && (result.success === 'true' || result.success === true)) {
+        setIsSubmitted(true)
+        setSubmitStatus({ type: 'success' })
+        setFormData({ name: '', email: '', message: '' })
+        setErrors({})
+      } else if (result.message && result.message.toLowerCase().includes('activation')) {
+        setIsSubmitted(true)
+        setSubmitStatus({
+          type: 'activation',
+          message:
+            'Message recorded! An activation confirmation was sent to the site owner.',
+        })
+        setFormData({ name: '', email: '', message: '' })
+        setErrors({})
+      } else {
+        setSubmitStatus({
+          type: 'error',
+          message: result.message || 'Unable to send message right now. Please try emailing directly.',
+        })
+      }
+    } catch {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Network error occurred. Please try again or email directly.',
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -280,7 +326,7 @@ export default function ContactPage() {
                   <div>
                     <h2 className="text-2xl font-bold">Send a Message</h2>
                     <p className="text-sm text-muted-foreground">
-                      Fill out the form below and I&apos;ll get back to you shortly.
+                      Fill out the form below and I&apos;ll get back to you directly in your inbox.
                     </p>
                   </div>
                 </div>
@@ -301,12 +347,16 @@ export default function ContactPage() {
                       <div className="space-y-2">
                         <h3 className="text-xl font-bold text-foreground">Message Sent!</h3>
                         <p className="text-sm text-muted-foreground max-w-md mx-auto">
-                          Thank you for reaching out. I have received your message and will reply to your email address as soon as possible.
+                          {submitStatus.message ||
+                            'Thank you for reaching out. Your message has been sent to Subham, and a reply will be sent to your email.'}
                         </p>
                       </div>
                       <button
                         type="button"
-                        onClick={() => setIsSubmitted(false)}
+                        onClick={() => {
+                          setIsSubmitted(false)
+                          setSubmitStatus({ type: 'idle' })
+                        }}
                         className="mt-4 px-5 py-2.5 rounded-lg border border-border bg-secondary hover:bg-secondary/80 text-foreground text-sm font-medium transition-colors cursor-pointer"
                       >
                         Send Another Message
@@ -423,6 +473,22 @@ export default function ContactPage() {
                           </p>
                         )}
                       </div>
+
+                      {/* Submission Error Banner & Fallback Link */}
+                      {submitStatus.type === 'error' && (
+                        <div className="p-3.5 rounded-lg border border-rose-500/30 bg-rose-500/10 text-rose-400 text-xs flex items-start gap-2.5">
+                          <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-rose-400" />
+                          <div className="space-y-1">
+                            <p>{submitStatus.message}</p>
+                            <a
+                              href={`mailto:${contactEmail}?subject=Portfolio Contact from ${encodeURIComponent(formData.name || 'Visitor')}&body=${encodeURIComponent(formData.message)}`}
+                              className="text-primary hover:underline font-medium inline-block mt-0.5"
+                            >
+                              Send directly via email app →
+                            </a>
+                          </div>
+                        </div>
+                      )}
 
                       {/* Submit Button */}
                       <button
