@@ -28,6 +28,28 @@
     --mouse-x: 50%;
     --mouse-y: 50%;
   }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 220 6% 4%;
+    --card: 0 0% 98%;
+    --card-foreground: 220 6% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 6% 4%;
+    --primary: 263 70% 50%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 6% 10%;
+    --muted: 220 14% 95%;
+    --muted-foreground: 220 8% 46%;
+    --accent: 220 14% 92%;
+    --accent-foreground: 220 6% 10%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 13% 88%;
+    --input: 220 13% 88%;
+    --ring: 263 70% 50%;
+  }
 }
 
 @layer base {
@@ -71,6 +93,12 @@
     rgba(255, 255, 255, 0.6) 50%,
     transparent 100%
   );
+}
+
+.light .grid-pattern {
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
 }
 
 /* Spotlight card effect */
