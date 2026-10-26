@@ -3,11 +3,18 @@
 import { useEffect, useState } from 'react'
 import { Command } from 'cmdk'
 import { useRouter } from 'next/navigation'
-import { Search, Home, User, Briefcase, Star, Mail } from 'lucide-react'
+import { Search, Home, User, Briefcase, Star, Mail, Check } from 'lucide-react'
 
 export function CommandPalette() {
   const [open, setOpen] = useState(false)
+  const [copied, setCopied] = useState(false)
   const router = useRouter()
+
+  useEffect(() => {
+    if (!open) {
+      setCopied(false)
+    }
+  }, [open])
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -26,11 +33,30 @@ export function CommandPalette() {
     command()
   }
 
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText('sharmasubham.1302@gmail.com')
+      setCopied(true)
+      setTimeout(() => {
+        setCopied(false)
+        setOpen(false)
+      }, 1200)
+    } catch {
+      setOpen(false)
+    }
+  }
+
   if (!open) return null
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm">
-      <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg">
+    <div
+      className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
+      onClick={() => setOpen(false)}
+    >
+      <div
+        className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg"
+        onClick={(e) => e.stopPropagation()}
+      >
         <Command className="rounded-lg border bg-card shadow-lg">
           <div className="flex items-center border-b px-3">
             <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
@@ -72,14 +98,30 @@ export function CommandPalette() {
                 <Star className="h-4 w-4" />
                 Extras
               </Command.Item>
-            </Command.Group>
-            <Command.Group heading="Actions">
               <Command.Item
-                onSelect={() => runCommand(() => navigator.clipboard.writeText('sharmasubham.1302@gmail.com'))}
+                onSelect={() => runCommand(() => router.push('/contact'))}
                 className="flex items-center gap-2 rounded-sm px-2 py-1.5 text-sm hover:bg-accent cursor-pointer"
               >
                 <Mail className="h-4 w-4" />
-                Copy Email
+                Contact
+              </Command.Item>
+            </Command.Group>
+            <Command.Group heading="Actions">
+              <Command.Item
+                onSelect={copyEmail}
+                className="flex items-center gap-2 rounded-sm px-2 py-1.5 text-sm hover:bg-accent cursor-pointer"
+              >
+                {copied ? (
+                  <>
+                    <Check className="h-4 w-4 text-emerald-500 scale-110 transition-transform" />
+                    <span className="text-emerald-500 font-medium">Copied to clipboard!</span>
+                  </>
+                ) : (
+                  <>
+                    <Mail className="h-4 w-4" />
+                    <span>Copy Email</span>
+                  </>
+                )}
               </Command.Item>
             </Command.Group>
           </Command.List>
