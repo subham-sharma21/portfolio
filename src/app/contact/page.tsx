@@ -33,6 +33,7 @@ function BehanceIcon({ className }: { className?: string }) {
 }
 
 const contactEmail = 'sharmasubham.1302@gmail.com'
+const formSubmitEndpoint = 'https://formsubmit.co/ajax/a46b32b979ba90ab90e4bcc25d6546be'
 
 const directMethods = [
   {
@@ -75,7 +76,6 @@ export default function ContactPage() {
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
     } catch {
-      // Fallback for older browsers
       const textarea = document.createElement('textarea')
       textarea.value = contactEmail
       document.body.appendChild(textarea)
@@ -122,7 +122,7 @@ export default function ContactPage() {
     setSubmitStatus({ type: 'idle' })
 
     try {
-      const res = await fetch(`https://formsubmit.co/ajax/${contactEmail}`, {
+      const res = await fetch(formSubmitEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -318,7 +318,7 @@ export default function ContactPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="lg:col-span-7"
             >
-              <div className="spotlight-card bg-card border border-border rounded-xl p-6 sm:p-8 relative">
+              <div className="bg-card border border-border rounded-xl p-6 sm:p-8 relative z-10 shadow-sm">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0">
                     <MessageSquare className="w-5 h-5" />
@@ -370,13 +370,13 @@ export default function ContactPage() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      className="space-y-5"
+                      className="space-y-5 relative z-20 pointer-events-auto"
                     >
                       {/* Name Field */}
                       <div>
                         <label
                           htmlFor="name"
-                          className="block text-sm font-medium text-foreground mb-1.5"
+                          className="block text-sm font-medium text-foreground mb-1.5 cursor-pointer"
                         >
                           Name <span className="text-primary">*</span>
                         </label>
@@ -393,7 +393,7 @@ export default function ContactPage() {
                           placeholder="Your name"
                           aria-invalid={!!errors.name}
                           aria-describedby={errors.name ? 'name-error' : undefined}
-                          className={`w-full px-4 py-3 rounded-lg bg-secondary/50 border text-foreground placeholder:text-muted-foreground text-sm outline-none transition-colors focus:ring-2 focus:ring-primary ${
+                          className={`w-full px-4 py-3 rounded-lg bg-secondary/50 border text-foreground placeholder:text-muted-foreground text-sm outline-none transition-colors focus:ring-2 focus:ring-primary relative z-20 pointer-events-auto cursor-text select-text ${
                             errors.name
                               ? 'border-rose-500 focus:ring-rose-500'
                               : 'border-border focus:border-primary'
@@ -410,7 +410,7 @@ export default function ContactPage() {
                       <div>
                         <label
                           htmlFor="email"
-                          className="block text-sm font-medium text-foreground mb-1.5"
+                          className="block text-sm font-medium text-foreground mb-1.5 cursor-pointer"
                         >
                           Email <span className="text-primary">*</span>
                         </label>
@@ -427,7 +427,7 @@ export default function ContactPage() {
                           placeholder="your.email@example.com"
                           aria-invalid={!!errors.email}
                           aria-describedby={errors.email ? 'email-error' : undefined}
-                          className={`w-full px-4 py-3 rounded-lg bg-secondary/50 border text-foreground placeholder:text-muted-foreground text-sm outline-none transition-colors focus:ring-2 focus:ring-primary ${
+                          className={`w-full px-4 py-3 rounded-lg bg-secondary/50 border text-foreground placeholder:text-muted-foreground text-sm outline-none transition-colors focus:ring-2 focus:ring-primary relative z-20 pointer-events-auto cursor-text select-text ${
                             errors.email
                               ? 'border-rose-500 focus:ring-rose-500'
                               : 'border-border focus:border-primary'
@@ -444,7 +444,7 @@ export default function ContactPage() {
                       <div>
                         <label
                           htmlFor="message"
-                          className="block text-sm font-medium text-foreground mb-1.5"
+                          className="block text-sm font-medium text-foreground mb-1.5 cursor-pointer"
                         >
                           Message <span className="text-primary">*</span>
                         </label>
@@ -461,7 +461,7 @@ export default function ContactPage() {
                           placeholder="Tell me about your project, idea, or role..."
                           aria-invalid={!!errors.message}
                           aria-describedby={errors.message ? 'message-error' : undefined}
-                          className={`w-full px-4 py-3 rounded-lg bg-secondary/50 border text-foreground placeholder:text-muted-foreground text-sm outline-none transition-colors focus:ring-2 focus:ring-primary resize-y min-h-[120px] ${
+                          className={`w-full px-4 py-3 rounded-lg bg-secondary/50 border text-foreground placeholder:text-muted-foreground text-sm outline-none transition-colors focus:ring-2 focus:ring-primary resize-y min-h-[120px] relative z-20 pointer-events-auto cursor-text select-text ${
                             errors.message
                               ? 'border-rose-500 focus:ring-rose-500'
                               : 'border-border focus:border-primary'
@@ -494,7 +494,7 @@ export default function ContactPage() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 relative z-20 pointer-events-auto"
                       >
                         {isSubmitting ? (
                           <>
