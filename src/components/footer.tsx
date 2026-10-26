@@ -3,14 +3,6 @@
 import Link from 'next/link'
 import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react'
 
-const navLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Projects', href: '/projects' },
-  { name: 'Extras', href: '/extras' },
-  { name: 'Contact', href: '/contact' },
-]
-
 function BehanceIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -55,10 +47,10 @@ export function Footer() {
 
   return (
     <footer className="border-t border-border/40 bg-background/50 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start mb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
           {/* Branding & Tagline */}
-          <div className="space-y-2">
+          <div className="space-y-1.5 max-w-md">
             <Link
               href="/"
               className="text-lg font-bold tracking-tight text-foreground hover:text-primary transition-colors"
@@ -66,35 +58,13 @@ export function Footer() {
               Subham Sharma
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Software Engineer at Cognizant. Crafting scalable frontend architecture, modern web apps, and refined digital experiences.
+              Crafting scalable frontend architecture, modern web apps, and refined digital experiences.
             </p>
           </div>
 
-          {/* Quick Navigation Links */}
-          <div className="md:text-center space-y-3">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-              Navigation
-            </h3>
-            <ul className="flex flex-wrap md:justify-center gap-x-6 gap-y-2 text-sm">
-              {navLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* Social Links */}
-          <div className="md:text-right space-y-3">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-              Connect
-            </h3>
-            <div className="flex md:justify-end items-center gap-3">
+          <div className="space-y-2">
+            <div className="flex items-center gap-3">
               {socialLinks.map((social) => {
                 const Icon = social.icon
                 return (
@@ -115,7 +85,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar: Copyright & Back to Top */}
-        <div className="pt-8 border-t border-border/30 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
+        <div className="pt-6 border-t border-border/30 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
           <p>© {new Date().getFullYear()} Subham Sharma. All rights reserved.</p>
 
           <button
