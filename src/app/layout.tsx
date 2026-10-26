@@ -4,7 +4,6 @@ import './globals.css'
 import { GridBackground } from '@/components/grid-background'
 import { Navigation } from '@/components/navigation'
 import { CommandPalette } from '@/components/command-palette'
-import { Footer } from '@/components/footer'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
@@ -57,14 +56,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');if(t){document.documentElement.classList.remove('dark','light');document.documentElement.classList.add(t);}}catch(e){}})();`,
-          }}
-        />
-      </head>
+    <html lang="en" className="dark">
       <body className={inter.className}>
         <GridBackground />
         <Navigation />
@@ -72,7 +64,6 @@ export default function RootLayout({
         <main className="pt-16">
           {children}
         </main>
-        <Footer />
         <Analytics />
         <SpeedInsights />
       </body>

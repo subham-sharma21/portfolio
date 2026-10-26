@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Search, Sun, Moon } from 'lucide-react'
+import { Menu, X, Search } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const navigation = [
@@ -12,7 +12,6 @@ const navigation = [
   { name: 'About', href: '/about' },
   { name: 'Projects', href: '/projects' },
   { name: 'Extras', href: '/extras' },
-  { name: 'Contact', href: '/contact' },
 ]
 
 const statusOptions = [
@@ -27,29 +26,7 @@ export function Navigation() {
   const [status, setStatus] = useState(statusOptions[0])
   const [isManual, setIsManual] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark')
-  const [mounted, setMounted] = useState(false)
   const manualTimeoutRef = useRef<NodeJS.Timeout | null>(null)
-
-  useEffect(() => {
-    setMounted(true)
-    const saved = localStorage.getItem('theme') as 'dark' | 'light' | null
-    if (saved) {
-      setTheme(saved)
-      document.documentElement.classList.remove('dark', 'light')
-      document.documentElement.classList.add(saved)
-    } else if (document.documentElement.classList.contains('light')) {
-      setTheme('light')
-    }
-  }, [])
-
-  const toggleTheme = () => {
-    const nextTheme = theme === 'dark' ? 'light' : 'dark'
-    setTheme(nextTheme)
-    localStorage.setItem('theme', nextTheme)
-    document.documentElement.classList.remove('dark', 'light')
-    document.documentElement.classList.add(nextTheme)
-  }
 
   useEffect(() => {
     if (isManual) return // Don't auto-update if manually set
@@ -190,20 +167,6 @@ export function Navigation() {
                 <kbd className="hidden sm:inline-flex pointer-events-none h-5 select-none items-center gap-1 rounded border border-border bg-muted/80 px-1.5 font-mono text-[10px] font-medium text-muted-foreground">
                   <span className="text-xs">⌘</span>K
                 </kbd>
-              </button>
-
-              {/* Theme toggle button */}
-              <button
-                type="button"
-                onClick={toggleTheme}
-                className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-colors cursor-pointer"
-                aria-label="Toggle theme"
-              >
-                {mounted && theme === 'light' ? (
-                  <Moon className="h-4 w-4" aria-hidden="true" />
-                ) : (
-                  <Sun className="h-4 w-4" aria-hidden="true" />
-                )}
               </button>
 
               {/* Mobile menu hamburger toggle */}
